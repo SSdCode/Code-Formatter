@@ -1,0 +1,312 @@
+:root {
+  /* Dark theme colors */
+  --bg-color: #242424;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --border-color: #333;
+  --control-bg: #1a1a1a;
+  --button-hover-bg: #2a2a2a;
+  --toggle-bg: #333;
+  --toggle-checked-bg: #00cc66;
+  --success-color: #00cc66;
+  --error-color: #ff4444;
+  --upload-button-bg: #646cff;
+  --upload-button-hover: #747bff;
+  --format-button-bg: #00cc66;
+  --format-button-hover: #00dd77;
+  --format-button-active: #00bb55;
+  --copy-button-bg: #4a9eff;
+  --copy-button-hover: #5babff;
+  --copy-button-active: #3991ff;
+  --download-button-bg: #ff6b6b;
+  --download-button-hover: #ff7a7a;
+  --download-button-active: #ff5c5c;
+}
+
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #213547;
+  --border-color: #ddd;
+  --control-bg: #f9f9f9;
+  --button-hover-bg: #f0f0f0;
+  --toggle-bg: #ccc;
+  --toggle-checked-bg: #00aa55;
+  --success-color: #00aa55;
+  --error-color: #ff4444;
+  --upload-button-bg: #5a5fff;
+  --upload-button-hover: #6b6fff;
+  --format-button-bg: #00aa55;
+  --format-button-hover: #00bb66;
+  --format-button-active: #009944;
+  --copy-button-bg: #3384e6;
+  --copy-button-hover: #4491ed;
+  --copy-button-active: #2277d9;
+  --download-button-bg: #e65252;
+  --download-button-hover: #ed6363;
+  --download-button-active: #d94141;
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  box-sizing: border-box;
+  max-width: 100vw;
+}
+
+/* Header styles */
+header {
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+header h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow controls to wrap on smaller screens */
+}
+
+.output-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+select {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--control-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.file-upload {
+  position: relative;
+}
+
+.file-upload label {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: var(--upload-button-bg);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.file-upload label:hover {
+  background-color: var(--upload-button-hover);
+}
+
+.file-upload input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Toggle styles (for both live formatting and theme) */
+.live-format-toggle,
+.theme-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.live-format-toggle label,
+.theme-toggle label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.live-format-toggle input[type="checkbox"],
+.theme-toggle input[type="checkbox"] {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  appearance: none;
+  background-color: var(--toggle-bg);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 8px;
+}
+
+.live-format-toggle input[type="checkbox"]::before,
+.theme-toggle input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: white;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+
+.live-format-toggle input[type="checkbox"]:checked,
+.theme-toggle input[type="checkbox"]:checked {
+  background-color: var(--toggle-checked-bg);
+}
+
+.live-format-toggle input[type="checkbox"]:checked::before,
+.theme-toggle input[type="checkbox"]:checked::before {
+  transform: translateX(20px);
+}
+
+.toggle-label {
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+/* Button styles */
+.format-button,
+.copy-button,
+.download-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s, transform 0.2s, opacity 0.2s;
+}
+
+.format-button {
+  background-color: var(--format-button-bg);
+}
+
+.format-button:hover {
+  background-color: var(--format-button-hover);
+}
+
+.format-button:active {
+  background-color: var(--format-button-active);
+}
+
+.copy-button {
+  background-color: var(--copy-button-bg);
+}
+
+.copy-button:hover {
+  background-color: var(--copy-button-hover);
+}
+
+.copy-button:active {
+  background-color: var(--copy-button-active);
+}
+
+.download-button {
+  background-color: var(--download-button-bg);
+}
+
+.download-button:hover {
+  background-color: var(--download-button-hover);
+}
+
+.download-button:active {
+  background-color: var(--download-button-active);
+}
+
+button:disabled {
+  background-color: var(--toggle-bg);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.format-button:hover:not(:disabled),
+.copy-button:hover:not(:disabled),
+.download-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+/* Message styles */
+.error-message,
+.success-message {
+  text-align: center;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: var(--error-color);
+  background-color: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.2);
+}
+
+.success-message {
+  color: var(--success-color);
+  background-color: rgba(0, 204, 102, 0.1);
+  border: 1px solid rgba(0, 204, 102, 0.2);
+}
+
+/* Main editor container */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.editor-container {
+  display: flex;
+  flex: 1;
+  gap: 40px;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.editor {
+  flex: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  min-width: 0;
+}
+
+/* Footer styles */
+footer {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+footer p {
+  margin: 0;
+  opacity: 0.8;
+}
